@@ -13,30 +13,44 @@ This is a simple example of how you can build a REST API based on nodejs with a 
 </ol>
 
 <h2>REST API</h2>
-<b>GET http://localhost:3000/api/users</b></br>
+
+<h3>User Management</h3>
+<b>GET http://localhost:8081/api/users</b></br>
 
 <pre>
-POST http://localhost:3000/api/users
+POST http://localhost:8081/api/users
 {
 	"email": "hans@mydomain.com",
 	"name": "neuer name",
 	"password": "meinpassword",
 }
 </pre>
-<b>GET http://localhost:3000/api/users/hans@mydomain.com</b></br>
+<b>GET http://localhost:8081/api/users/hans@mydomain.com</b></br>
 <pre>
 
 </pre>
-<b>PUT http://localhost:3000/api/users/hans@mydomain.com</b></br>
+<b>PUT http://localhost:8081/api/users/hans@mydomain.com</b></br>
 <pre>
 {
 	"name": "neuer name",
 	"password": "meinpassword"
 }
 </pre>
-<b>DELETE http://localhost:3000/api/users/hans@mydomain.com</b></br>
+<b>DELETE http://localhost:8081/api/users/hans@mydomain.com</b></br>
 <pre>
 
+</pre>
+
+<h3>Auth</h3>
+
+<b>POST http://localhost:8081/api/auth</b></br>
+
+<pre>
+POST http://localhost:8081/api/auth
+{
+	"email": "hans@mydomain.com",
+	"password": "meinpassword",
+}
 </pre>
 
 
@@ -46,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(70) NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
+  `groups` varchar(1024) NULL,
   `password` varchar(45) DEFAULT NULL,
   `join_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

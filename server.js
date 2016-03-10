@@ -3,6 +3,7 @@ var mysql   = require("mysql");
 var bodyParser  = require("body-parser");
 var md5 = require('MD5');
 var rest = require("./rest.js");
+var auth = require("./auth.js");
 var app  = express();
 
 function REST(){
@@ -18,7 +19,7 @@ REST.prototype.connectMysql = function() {
         user     : 'nodejs_rest_demo',
         password : 'nodejs_rest_demo',
         database : 'nodejs_rest_demo',
-        debug    :  true
+        debug    :  false
     });
     pool.getConnection(function(err,connection){
         if(err) {
@@ -36,12 +37,13 @@ REST.prototype.configureExpress = function(connection) {
       var router = express.Router();
       app.use('/api', router);
       var rest_router = new rest(router,connection,md5);
+	  var rest_router2 = new auth(router,connection,md5);
       self.startServer();
 }
 
 REST.prototype.startServer = function() {
-      app.listen(3000,function(){
-          console.log("All right ! I am alive at Port 3000.");
+      app.listen(8081,function(){
+          console.log("All right ! I am alive at Port 8081.");
       });
 }
 
