@@ -2,7 +2,6 @@
 
 This is a simple example of how you can build a REST API based on nodejs with a mysql db as data store.
 
-
 <h2>Getting started</h2>
 
 <ol>
