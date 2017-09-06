@@ -8,7 +8,8 @@ var app  = express();
 
 function REST(){
     var self = this;
-    self.connectMysql();
+    //self.connectMysql();
+	self.configureExpress(null);
 };
 
 REST.prototype.connectMysql = function() {
